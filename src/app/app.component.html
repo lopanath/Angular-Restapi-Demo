@@ -1,0 +1,68 @@
+
+<div class="main-area">
+  <div class="content-area">
+  <div class="header">
+  <h1>Manage Students</h1>
+  <hr />
+  </div>
+  <div class="container">
+  <!--Add product form-->
+  <div class="form-area">
+  <h3>Create Student</h3>
+  <form (ngSubmit)="onSubmit(studentForm.value)" #studentForm="ngForm">
+  <label>Student Name</label>
+  <input type="text" name="studentName" ngModel />
+   
+            <label>Student Address</label>
+  <input type="text" name="studentAddress" ngModel />
+   
+            <label>Student Age</label>
+  <input type="text" name="studentAge" ngModel />
+   
+            <label>Student Email</label>
+  <input type="text" name="studentEmail" ngModel />
+   
+            <input type="submit" value="{{editMode ? 'Update Student' :'Add Student'}}" />
+  </form>
+  </div>
+   
+        <!--Display product area-->
+  <div class="product-display-area">
+  <h3>All Students</h3>
+  <table id="products">
+  <tr>
+  <th>Student Id</th>
+  <th>Student Name</th>
+  <th>Student Address</th>
+  <th>Student Age</th>
+  <th>Student Email</th>
+  </tr>
+   
+            <!-- <tr >
+  <td>1</td>
+  <td>Ishita</td>
+  <td>Blr</td>
+  <td>30</td>
+  <td>i&#64;gmail.com</td>
+  <td><button>Delete</button></td>
+  </tr> -->
+
+  <tr *ngFor="let student of allStudents">
+    <td>{{student.studentId}}</td>
+    <td>{{student.studentName}}</td>
+      <td>{{student.studentAddress}}</td>
+    <td>{{student.studentAge}}</td>
+    <td>{{student.studentEmail}}</td>
+    <td><button class="btn-delete" (click)="onUpdate(student)">Edit</button></td>
+    <td><button class="btn-delete" (click)="onDelete(student.studentId)">Delete</button> </td>
+  </tr>
+
+
+
+
+  </table>
+  <hr />
+  </div>
+  </div>
+  </div>
+  </div>
